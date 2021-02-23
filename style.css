@@ -23,7 +23,7 @@ body {
 
 #navlist a{
     display: block;
-    font-size: x-large;
+    font-size: 1.5em;
     padding: .5em .5em;
 }
 
@@ -63,3 +63,20 @@ figcaption {
 a{
     text-decoration: none;
 }
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 100%;
+    }
+}
+@media (max-width: 980px) {
+    html {
+        font-size: 80%;
+    }
+}
+@media (max-width: 460px) {
+    html {
+        font-size: 60%;
+    }
+}
+
