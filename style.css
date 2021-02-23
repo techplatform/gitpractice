@@ -8,16 +8,27 @@ body {
     font-family: 'poppins, sans-serif';
 }
 
-.navlist {
+#navbar {
+    width: 100%; 
     display: flex;
     justify-content: flex-end;
-    list-style: none;
+    position: fixed;
     background-color: cornflowerblue;
 }
 
-li > a{
+#navlist {
+    display: flex;   
+    list-style: none;   
+}
+
+#navlist a{
+    display: block;
     font-size: x-large;
-    padding: 1em 2em;
+    padding: .5em .5em;
+}
+
+#navlist a:hover {
+    background-color: darkgray;
 }
 
 #welcome-section {
