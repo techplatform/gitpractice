@@ -8,6 +8,12 @@ body {
     font-family: 'poppins, sans-serif';
 }
 
+.navlist {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    background-color: cornflowerblue;
+}
 
 li > a{
     font-size: x-large;
