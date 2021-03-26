@@ -1,10 +1,26 @@
 import {films} from '../data/films.js'
 
 
-console.log(films[6])
+let filmList = document.querySelector('#filmList')
 
-let filmOne = document.querySelector('#film1')
-let filmTwo = document.querySelector('#film2')
 
-filmOne.textContent = films[2].title
-filmTwo.textContent = films[1].title
+for (let i = 0; i < films.length; i++) {
+    
+    const foundFilm = films.find(film => getLastNumber(film.url) === (i + 1).toString())
+    let posterFig = document.createElement('figure')
+    let figImg = document.createElement('img')
+    figImg.src = `https://starwars-visualguide.com/assets/img/films/${i + 1}.jpg`
+    let figCaption = document.createElement('figcaption')
+    
+    figCaption.textContent = foundFilm.title
+    posterFig.appendChild(figImg)
+    posterFig.appendChild(figCaption)
+    
+    filmList.appendChild(posterFig)
+}
+
+function getLastNumber(url) {
+    let end = url.lastIndexOf('/')
+    return url.charAt(end - 1)
+    //console.log(`filmNum is ${url.charAt(filmNum)}`)
+}
