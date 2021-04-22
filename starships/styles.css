@@ -1,14 +1,30 @@
+
 :root {
     margin: 0;
     box-sizing: border-box;
 }
 
 
-
 main {
     display: flex;
+    height: 100vh;
 }
 
+.shipView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+nav {
+    width: 600px;
+}
+
+img, nav {
+    position: relative;
+    z-index: 1;
+}
 a {
     text-decoration: none;
     color: #fff;
