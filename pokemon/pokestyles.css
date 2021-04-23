@@ -44,6 +44,11 @@
     background: red;
 }
 
+.card_face--front img {
+    height: 190px;
+    width: 190px;
+}
+
 .card_face--back {
     background: blue;
     transform: rotateY(180deg);
