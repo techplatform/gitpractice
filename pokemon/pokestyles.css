@@ -41,7 +41,7 @@
 } 
 
 .card_face--front {
-    background: red;
+    background: goldenrod;
 }
 
 .card_face--front img {
@@ -50,10 +50,30 @@
 }
 
 .card_face--back {
-    background: blue;
+    background: grey;
     transform: rotateY(180deg);
 }
 
-#submitButton {
-    color: red;
+.grass {
+    background-color: green;
+}
+
+.fire {
+    background-color: red;
+}
+
+.water {
+    background-color: blue;
+}
+
+.bug {
+    background-color: rosybrown;
+}
+
+.normal {
+    background-color: beige;
+}
+
+.flying {
+    background-color: mintcream;
 }
