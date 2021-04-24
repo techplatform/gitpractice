@@ -281,7 +281,7 @@ function getPokeTypeColor(pokeType) {
             break;
             
         case 'psychic':
-            color = '#8000ff'
+            color = '#bf80ff'
             break;
             
         case 'normal':
