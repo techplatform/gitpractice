@@ -24,13 +24,14 @@ loadButton.addEventListener('click', () => {
 })
 
 class Pokemon {
-    constructor (name, height, weight, abilities, moves) {
+    constructor (name, height, weight, abilities, moves, types) {
         this.id = 900
         this.name = name,
         this.height = height
         this.weight = weight
         this.abilities = abilities
         this.moves = moves
+        this.types = types
     }
 }
 
@@ -43,9 +44,15 @@ newButton.addEventListener('click', () => {
         pokeHeight,
         pokeWeight,
         ['eat', 'sleep'],
-        ['study', 'game']
+        ['study', 'game'],
+        [{
+            type: {
+            name: "normal"
+            },
+        },
+        ],
     )
-    console.log(newPokemon)
+    //console.log(newPokemon)
     populatePokeCard(newPokemon)
 })
 
@@ -117,8 +124,19 @@ function populateCardFront (pokemon) {
     let frontImage = document.createElement('img')
     frontImage.src = getImageFileName(pokemon)
     
-    let pokeType = pokemon.types[0].type.name
-    pokeFront.classList.add(pokeType)
+    let pokeType1 = pokemon.types[0].type.name
+    if(pokemon.types.length > 1) {
+        let pokeType2 = pokemon.types[1].type.name
+        pokeFront.style.setProperty('background', `linear-gradient( ${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`)
+    } else {
+        pokeFront.style.setProperty('background', getPokeTypeColor(pokeType1))
+    }
+
+    //console.log(getPokeTypeColor(pokeType))
+
+
+    
+    //pokeFront.classList.add(pokeType)
     
     pokeFront.appendChild(frontLabel)
     pokeFront.appendChild(frontImage)
@@ -151,3 +169,80 @@ function getImageFileName(pokemon) {
     }
     return `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokeId}.png`
 }
+
+
+function getPokeTypeColor(pokeType) {
+    let color
+    switch (pokeType) {
+        case 'grass':
+            color = '#9fdf9f'
+            break;
+            
+        case 'fire':
+            color = '#ff4500'
+            break;
+            
+        case 'water':
+            color = '#0066ff'
+            break;
+            
+        case 'bug':
+            color = '#b3b3ff'
+            break;
+            
+        case 'flying':
+            color = '#00bfff'
+            break;
+            
+        case 'electric':
+            color = '#3333ff'
+            break;
+            
+        case 'poison':
+            color = '#990073'
+            break;
+            
+        case 'psychic':
+            color = '#8000ff'
+            break;
+            
+        case 'normal':
+            color = '#ffb399'
+            break;
+            
+        default:
+            color ='#e0ebeb'
+    }
+    return color
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
