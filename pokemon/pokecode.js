@@ -24,13 +24,14 @@ loadButton.addEventListener('click', () => {
 })
 
 class Pokemon {
-    constructor (name, height, weight, abilities, moves, types) {
+    constructor (name, height, weight, abilities, moves, held_items, types) {
         this.id = 900
         this.name = name,
         this.height = height
         this.weight = weight
         this.abilities = abilities
         this.moves = moves
+        this.held_items = held_items
         this.types = types
     }
 }
@@ -41,14 +42,17 @@ newButton.addEventListener('click', () => {
     let pokeWeight = prompt('What is the weight of your new Pokemon?')
     let pokeAbilities = prompt('What are the abilities that your new Pokemon has? Use commas to seperate.')
     let pokeMoves = prompt("What are the moves that your new Pokemon has? If your Pokemon has multiple moves, use commas to seperate.")
+    let pokaHeld_items = prompt("What are the hidden items that your new Pokemon has? If your Pokemon has multiple hidden items, use commas to seperate.")
     let abilitiesArray = getAbilitiesArray(pokeAbilities)
     let movesArray = getMovesArray(pokeMoves)
+    let held_itemsArray = getHeld_itemsArray(pokaHeld_items)
     let newPokemon = new Pokemon(
         pokeName,
         pokeHeight,
         pokeWeight,
         abilitiesArray,
         movesArray,
+        held_itemsArray,
 //        [
 //            {
 //                move: {
@@ -84,6 +88,17 @@ function getMovesArray(commaString) {
         return {
             moves: {
                 name: movesName
+            }
+        }
+    })
+}
+
+function getHeld_itemsArray(commaString) {
+    let tempArray = commaString.split(',')
+    return tempArray.map((held_itemsName) => {
+        return {
+            held_items: {
+                name: held_itemsName
             }
         }
     })
@@ -157,13 +172,18 @@ function populateCardFront (pokemon) {
     let frontImage = document.createElement('img')
     frontImage.src = getImageFileName(pokemon)
     
-    let pokeType1 = pokemon.types[0].type.name
-    if(pokemon.types.length > 1) {
-        let pokeType2 = pokemon.types[1].type.name
-        pokeFront.style.setProperty('background', `linear-gradient( ${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`)
-    } else {
-        pokeFront.style.setProperty('background', getPokeTypeColor(pokeType1))
-    }
+    frontImage.addEventListener('error', (err) => {
+        //console.log(`broken image: ${err}`)
+        frontImage.src = 'images/pokeball.png'
+    })
+    
+//    let pokeType1 = pokemon.types[0].type.name
+//    if(pokemon.types.length > 1) {
+//        let pokeType2 = pokemon.types[1].type.name
+//        pokeFront.style.setProperty('background', `linear-gradient( ${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`)
+//    } else {
+//        pokeFront.style.setProperty('background', getPokeTypeColor(pokeType1))
+//    }
 
     //console.log(getPokeTypeColor(pokeType))
 
@@ -179,7 +199,7 @@ function populateCardFront (pokemon) {
 function populateCardBack(pokemon) {
     let pokeBack = document.createElement('div')
     pokeBack.className = 'card_face card_face--back'
-    let backLabel = document.createElement('p')
+    let backLabel = document.createElement('h3')
     backLabel.textContent = `Moves: ${pokemon.moves.length}`
     pokeBack.appendChild(backLabel)
     
@@ -201,6 +221,18 @@ function populateCardBack(pokemon) {
         ability.textContent = pokeAbility.ability.name
         pokeBack.appendChild(ability)
     })
+    
+    let backItemsLabel = document.createElement('h3')
+    backItemsLabel.textContent = `Held Items: ${pokemon.held_items.length}`
+    pokeBack.appendChild(backItemsLabel)
+    
+    let pokeType1 = pokemon.types[0].type.name
+    if(pokemon.types.length > 1) {
+        let pokeType2 = pokemon.types[1].type.name
+        pokeBack.style.setProperty('background', `linear-gradient( ${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`)
+    } else {
+        pokeBack.style.setProperty('background', getPokeTypeColor(pokeType1))
+    }
     
     return pokeBack
 }

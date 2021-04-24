@@ -13,7 +13,7 @@
 .scene {
     width: 200px;
     height: 260px;
-    border: 1px solid #ccc;
+/*    border: 1px solid #ccc;*/
     margin: 10px;
     perspective: 600px;
 }
@@ -39,20 +39,32 @@
     font-weight: bold;
     backface-visibility: hidden;
 } 
+.card_face--front p{
+    margin-top: 190px;
+}
 
 .card_face--front {
     background: goldenrod;
+    border: 7px solid gold;
 }
 
 .card_face--front img {
-    height: 190px;
-    width: 190px;
+    height: 170px;
+    width: 170px;
+    margin-top: -190px;
+    margin-bottom: 190px;
+}
+
+.card_face--back h3{
+    margin-top: 15px;
 }
 
 .card_face--back {
+    border: 7px solid gold;
     background: grey;
     transform: rotateY(180deg);
 }
+/*
 
 .grass {
     background-color: green;
@@ -76,4 +88,4 @@
 
 .flying {
     background-color: mintcream;
-}
+}*/
