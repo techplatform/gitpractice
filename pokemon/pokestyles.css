@@ -5,7 +5,9 @@
 }
 
 body{
-    background-color: darkseagreen;
+    background-color: #7fad71;
+    background-image: url("images/background.png");
+    background-repeat:no-repeat;
 }
 .pokeGrid {
     display: flex;
@@ -26,7 +28,7 @@ body{
 
 h1{
   margin: 10px;
-
+    font-size:2.75rem;
 }
 .loadPokemon {
     border: 1px solid black;
@@ -128,27 +130,21 @@ h1{
     transform: rotateY(180deg);
 }
 /*
-
 .grass {
     background-color: green;
 }
-
 .fire {
     background-color: red;
 }
-
 .water {
     background-color: blue;
 }
-
 .bug {
     background-color: rosybrown;
 }
-
 .normal {
     background-color: beige;
 }
-
 .flying {
     background-color: mintcream;
 }*/

@@ -1,19 +1,19 @@
-import { starships } from '../data/starships.js'
+import { planets } from '../data/planets.js'
 import { getLastNumber, removeChildren } from '../utils/index.js'
 
-console.log(starships.length)
+console.log(planets.length)
 
 const nav = document.querySelector('nav')
 const navList = document.querySelector('.navList')
 const shipView = document.querySelector('.shipView')
 
-function populateNav(starships) {
-    starships.forEach(starship => {
+function populateNav(planets) {
+    planets.forEach(planets => {
         let anchorWrap = document.createElement('a')
         anchorWrap.href = '#'
-        anchorWrap.addEventListener('click', () => populateShipView(starship))
+        anchorWrap.addEventListener('click', () => populateShipView(planets))
         let listItem = document.createElement('li')
-        listItem.textContent = starship.name // starship.MGLT
+        listItem.textContent = planets.name // starship.MGLT
 
              
         anchorWrap.appendChild(listItem)
@@ -25,10 +25,11 @@ function populateShipView(shipData) {
     removeChildren(shipView)
     let shipNum = getLastNumber(shipData.url)
     let shipImage = document.createElement('img')
-    shipImage.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`
+    shipImage.src = `https://starwars-visualguide.com/assets/img/planets/${shipNum}.jpg`
     shipImage.addEventListener('error', (err) => {
         //counsole.log("Oops! Got an image loading error!")
         shipImage.hidden = true
+        
     })
     shipView.appendChild(shipImage)
 }
@@ -56,7 +57,7 @@ function getRandomPosition() {
     return [randomX, randomY]
 }
 
-populateNav(starships) 
+populateNav(planets) 
 
 addStarField(document.querySelector('body'), 1000)
 

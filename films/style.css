@@ -3,15 +3,19 @@
 }
 
 body {
-    background-color: black;
+    background-image: url("images/background.png");
 }
 #filmList {
     display: flex;
     flex-wrap: wrap; 
+    
+    justify-content: space-between;
 }
 
 figure {
     margin: 1em;
+    border: 1px white solid;
+/*    box-shadow: 3px 3px 3px red;*/
 }
 
 figcaption {
